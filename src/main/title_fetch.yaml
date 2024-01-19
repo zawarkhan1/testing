@@ -2,13 +2,6 @@ openapi: 3.0.1
 info:
   title: Title Fetch REST
   version: 1.0.0
-  x-ibm-name: title-fetch-rest-service-apigw
-servers:
-  - url: https://sandboxapi.1link.net.pk/uat-1link/sandbox
-security:
-  - clientIdHeader: []
-    OAuth-TF:
-      - 1LinkApi
 paths:
   /path-1:
     post:
@@ -26,6 +19,30 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/titleFetchRep'
+              example:
+                {
+                  "ResponseCode": "repsokiztoafd",
+                  "Pan": "kebtamint",
+                  "Amount": "8793410643165184",
+                  "TransmissionDateAndTime": "12/5/2094",
+                  "Stan": "holwirnalriwawh",
+                  "TimeLocalTransaction": "03:26",
+                  "DateLocalTransaction": "12/1/2122",
+                  "DateSettlement": "1/1/2044",
+                  "RetrievalReferenceNumber": "2774560074104832",
+                  "AuthorizationIdentificationResponse": "1984106613178368",
+                  "accountNumberTo": "6222426127348932",
+                  "Alias": "olulacie",
+                  "ToBankImd": "tewamanpeg",
+                  "accountTitleTo": "6304869614447355",
+                  "branchNameTo": "Etta Graham",
+                  "BankName": "Pearl Hogan",
+                  "IBAN_MobileAccountNumber": "6378803943238988",
+                  "Reserved1": "gemwojoosmani",
+                  "Reserved2": "tabohzoweehz",
+                  "Reserved3": "ufpezuohtoosna",
+                  "ResponseDetail": "nenar"
+                }
       x-codegen-request-body-name: titleFetchReq
 components:
   schemas:
