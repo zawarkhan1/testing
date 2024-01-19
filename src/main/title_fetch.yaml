@@ -18,31 +18,33 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/titleFetchRep'
+                type: json
+                items:
+                  $ref: '#/components/schemas/titleFetchRep'
               example:
-                {
-                  "ResponseCode": "repsokiztoafd",
-                  "Pan": "kebtamint",
-                  "Amount": "8793410643165184",
-                  "TransmissionDateAndTime": "12/5/2094",
-                  "Stan": "holwirnalriwawh",
-                  "TimeLocalTransaction": "03:26",
-                  "DateLocalTransaction": "12/1/2122",
-                  "DateSettlement": "1/1/2044",
-                  "RetrievalReferenceNumber": "2774560074104832",
-                  "AuthorizationIdentificationResponse": "1984106613178368",
-                  "accountNumberTo": "6222426127348932",
-                  "Alias": "olulacie",
-                  "ToBankImd": "tewamanpeg",
-                  "accountTitleTo": "6304869614447355",
-                  "branchNameTo": "Etta Graham",
-                  "BankName": "Pearl Hogan",
-                  "IBAN_MobileAccountNumber": "6378803943238988",
-                  "Reserved1": "gemwojoosmani",
-                  "Reserved2": "tabohzoweehz",
-                  "Reserved3": "ufpezuohtoosna",
-                  "ResponseDetail": "nenar"
-                }
+                response_json:
+                  value:
+                    - "ResponseCode": "repsokiztoafd",
+                      "Pan": "kebtamint",
+                      "Amount": "8793410643165184",
+                      "TransmissionDateAndTime": "12/5/2094",
+                      "Stan": "holwirnalriwawh",
+                      "TimeLocalTransaction": "03:26",
+                      "DateLocalTransaction": "12/1/2122",
+                      "DateSettlement": "1/1/2044",
+                      "RetrievalReferenceNumber": "2774560074104832",
+                      "AuthorizationIdentificationResponse": "1984106613178368",
+                      "accountNumberTo": "6222426127348932",
+                      "Alias": "olulacie",
+                      "ToBankImd": "tewamanpeg",
+                      "accountTitleTo": "6304869614447355",
+                      "branchNameTo": "Etta Graham",
+                      "BankName": "Pearl Hogan",
+                      "IBAN_MobileAccountNumber": "6378803943238988",
+                      "Reserved1": "gemwojoosmani",
+                      "Reserved2": "tabohzoweehz",
+                      "Reserved3": "ufpezuohtoosna",
+                      "ResponseDetail": "nenar"
       x-codegen-request-body-name: titleFetchReq
 components:
   schemas:
@@ -410,92 +412,3 @@ components:
         ResponseDetail:
           type: string
       additionalProperties: false
-    CardAcceptorNameLocation:
-      type: object
-      properties:
-        AgentCity:
-          type: string
-          example: karachi
-        Location:
-          type: string
-          example: M.A jinnah road
-        city:
-          type: string
-          example: karachi
-        state:
-          type: string
-          example: Sindh
-        zipCode:
-          type: string
-          example: "87656"
-        AgentName:
-          type: string
-          example: Ali Ahmed
-        ADCLiteral:
-          type: string
-          example: ABC
-        BankName:
-          type: string
-          example: ABC
-        country:
-          type: string
-          example: PK
-      additionalProperties: false
-    Reserved1:
-      type: object
-      properties:
-        Sender ID:
-          type: string
-        Beneficiary ID:
-          type: string
-        Sender Country Code:
-          type: string
-        Originator Details:
-          type: string
-      additionalProperties: false
-  securitySchemes:
-    clientIdHeader:
-      type: apiKey
-      name: X-IBM-Client-Id
-      in: header
-    OAuth-TF:
-      type: oauth2
-      flows:
-        clientCredentials:
-          tokenUrl: https://sandboxapi.1link.net.pk/uat-1link/sandbox/oauth2/token
-          scopes:
-            "1LinkApi": Scope for APIs
-      x-ibm-oauth-provider: newoauth
-x-ibm-configuration:
-  testable: true
-  enforced: true
-  cors:
-    enabled: true
-  phase: realized
-  type: rest
-  servers:
-    - url: https://sandboxapi.1link.net.pk/uat-1link/sandbox
-      type:
-        - production
-        - development
-  oauth-servers:
-    OAuth-TF:
-      tokenUrls:
-        - https://sandboxapi.1link.net.pk/uat-1link/sandbox/oauth2/token
-      authorizationUrls: []
-      refreshUrls: []
-x-ibm-comment:
-  - "AMU version used to port this API: v10.0.5.1-R0-8443e4b5477f4ff1dc261725a1ed3a2b0bb91cd1-2022-09-21T18:41:44Z"
-  - "API03: Suffix -apigw appended to API `title` and `x-ibm-name`. For details, see:\
-  \ https://www.ibm.com/docs/en/api-connect/10.0.x?topic=cadag-messages-generated-during-conversion-apis-datapower-api-gateway#API_NAME_ADDED_SUFFIX"
-  - "API06: Changed gateway type to `datapower-api-gateway`."
-  - "API14: Ported v5-compatible policies to work with the API Gateway and updated policy\
-  \ versions."
-  - "API45: Compatibility toggle: `copy-id-headers-to-message` set to value: `false`,\
-  \ which is the same as the API Gateway default. For details, see: https://www.ibm.com/docs/en/api-connect/10.0.x?topic=cadag-messages-generated-during-conversion-apis-datapower-api-gateway#COMPAT_TOGGLE_MATCHES_APIGW_DEFAULT"
-  - "API45: Compatibility toggle: `return-v5-responses` set to value: `false`, which\
-  \ is the same as the API Gateway default. For details, see: https://www.ibm.com/docs/en/api-connect/10.0.x?topic=cadag-messages-generated-during-conversion-apis-datapower-api-gateway#COMPAT_TOGGLE_MATCHES_APIGW_DEFAULT"
-  - "API61: Set buffering property to true. For details, see: https://www.ibm.com/docs/en/api-connect/10.0.x?topic=cadag-messages-generated-during-conversion-apis-datapower-api-gateway#SET_BUFFERING"
-  - "API40: Skipping JSON Schema definition: #/definitions/titleFetchRequestBody with\
-  \ multiple roots or not intended for XML data."
-x-original-swagger-version: "2.0"
