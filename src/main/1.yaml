@@ -33,6 +33,11 @@ paths:
                       size: L
                       price: 3.2
                       status: available
+                    - name: Baba David
+                      description: Delicieux Baba au Rhum pas calorique du tout
+                      size: L
+                      price: 3.2
+                      status: available
                     - name: Divorces
                       description: Delicieux Divorces pas calorique du tout
                       size: M
