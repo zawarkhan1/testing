@@ -1,0 +1,484 @@
+openapi: 3.0.1
+info:
+  title: Title Fetch REST
+  version: 1.0.0
+  x-ibm-name: title-fetch-rest-service-apigw
+servers:
+  - url: https://sandboxapi.1link.net.pk/uat-1link/sandbox
+security:
+  - clientIdHeader: []
+    OAuth-TF:
+      - 1LinkApi
+paths:
+  /path-1:
+    post:
+      summary: titleFetch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/titleFetchRequestBody'
+        required: false
+      responses:
+        "200":
+          description: 200 OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/titleFetchRep'
+      x-codegen-request-body-name: titleFetchReq
+components:
+  schemas:
+    titleFetchResponseBody:
+      type: object
+      properties:
+        ResponseCode:
+          type: string
+        PAN:
+          type: string
+        Amount:
+          type: string
+        TransmissionDateAndTime:
+          type: string
+        STAN:
+          type: string
+        Time:
+          type: string
+        Date:
+          type: string
+        DateSettlement:
+          type: string
+        RRN:
+          type: string
+        AuthorizationIdentificationResponse:
+          type: string
+        AccountNumberTo:
+          type: string
+        Alias:
+          type: string
+        ToBankIMD:
+          type: string
+        AccountTitleTo:
+          type: string
+        BranchNameTo:
+          type: string
+        BankName:
+          type: string
+        IBAN_MobileAccountNumber:
+          type: string
+        Reserved1:
+          $ref: '#/components/schemas/Reserved1'
+        Reserved2:
+          type: string
+        Reserved3:
+          type: string
+        ResponseDetail:
+          type: string
+      additionalProperties: false
+    CardAcceptorNameLoc:
+      type: object
+      properties:
+        Location:
+          type: string
+          example: Park Towers
+        City:
+          type: string
+          example: Karachi
+        State:
+          type: string
+          example: Sindh
+        ZipCode:
+          type: string
+          example: "34234"
+        AgentName:
+          type: string
+          example: Ali Qazi
+        AgentCity:
+          type: string
+          example: Karachi
+        ADCLiteral:
+          type: string
+          example: Any Channel
+        BankName:
+          type: string
+          example: Allied Bank
+        Country:
+          type: string
+          example: PK
+      additionalProperties: false
+    titleFetchRequestBody:
+      required:
+        - AccountNumberTo
+        - CardAcceptorNameLocation
+        - CardAcceptorTerminalId
+        - CurrencyCodeTransaction
+        - Date
+        - FromBankIMD
+        - MerchantType
+        - PAN
+        - PosEntMode
+        - RRN
+        - STAN
+        - Time
+        - ToBankIMD
+        - TransactionAmount
+        - TransmissionDateAndTime
+      type: object
+      properties:
+        TransactionAmount:
+          maxLength: 12
+          minLength: 1
+          type: string
+          description: "Transaction amount in PKR, up to 2 \ndecimal places"
+          example: "000000100000"
+        TransmissionDateAndTime:
+          maxLength: 10
+          minLength: 1
+          type: string
+          description: "Transmission date and time, Format: \n“MMDDhhmmss”. "
+          example: "0715133513"
+        STAN:
+          maxLength: 6
+          minLength: 1
+          type: string
+          description: "System Trace Audit Number. \n"
+          example: "102050"
+        Time:
+          maxLength: 6
+          minLength: 1
+          type: string
+          description: |-
+            Local transaction time,
+            Format: “hhmmss”
+          example: "133513"
+        Date:
+          maxLength: 4
+          minLength: 1
+          type: string
+          description: " Local transaction date. Format: “MMDD”"
+          example: "0715"
+        MerchantType:
+          maxLength: 4
+          minLength: 1
+          type: string
+          description: Four-digit code identifying merchant.
+          example: "0003"
+        FromBankIMD:
+          maxLength: 11
+          minLength: 1
+          type: string
+          description: The bank IMD/BIN of acquiring bank.
+          example: "998876"
+        RRN:
+          maxLength: 12
+          minLength: 1
+          type: string
+          description: Reference number sent by the acquirer.
+          example: "000000024420"
+        CardAcceptorTerminalId:
+          maxLength: 8
+          minLength: 1
+          type: string
+          description: Unique requesting terminal identifier.
+          example: "40260275"
+        CardAcceptorIdCode:
+          maxLength: 15
+          minLength: 1
+          type: string
+          description: Code uniquely identifying card acceptor.
+          example: "402626030259047"
+        CardAcceptorNameLocation:
+          $ref: '#/components/schemas/CardAcceptorNameLoc'
+        MerchantDetail:
+          maxLength: 999
+          type: string
+          description: In transactions this field contains Merchant Category code
+          example: ""
+        PaymentDetail:
+          maxLength: 44
+          minLength: 1
+          type: string
+          description: "Issuing transactions this field contains Merchant Category\
+            \ code \n          Payment Code (length=4) \n          Payment Details\
+            \ (length=40)"
+          example: '0320 Donations  Charity                     '
+        CurrencyCodeTransaction:
+          maxLength: 3
+          minLength: 1
+          type: string
+          description: "Currency Code, Transaction is the local currency of the acquirer."
+          example: "586"
+        AccountNumberFrom:
+          maxLength: 28
+          minLength: 1
+          type: string
+          description: AccountNumberFrom is a digits/characters used to identify customer
+            account
+          example: "3528555323354910"
+        AccountNumberTo:
+          maxLength: 28
+          minLength: 1
+          type: string
+          description: This field contains Destination Account Number
+          example: "6304532132598659"
+        ToBankIMD:
+          maxLength: 11
+          minLength: 1
+          type: string
+          description: The bank IMD/BIN of issuer bank
+          example: "221166"
+        PAN:
+          maxLength: 19
+          type: string
+          description: Personal Account Number.
+          example: "4250108749566"
+        ExpiryDate:
+          maxLength: 4
+          minLength: 1
+          type: string
+          example: "2205"
+        PosEntMode:
+          maxLength: 3
+          minLength: 1
+          type: string
+          description: Point-of-Service Entry Mode
+          example: "000"
+        BeneficiaryBankName:
+          maxLength: 20
+          type: string
+          description: This field will contain the Bank Name of “To/Destination” Account
+          example: 1Link Model Bank
+        Reserved1:
+          maxLength: 999
+          type: string
+          example: Reserved for future
+        Reserved2:
+          maxLength: 999
+          type: string
+          example: Reserved for future
+        Reserved3:
+          maxLength: 1001
+          type: string
+          example: Reserved for future
+      additionalProperties: false
+    titleFetchReq:
+      required:
+        - CardAcceptorNameLocation
+        - CardAcceptorTerminalId
+        - CurrencyCodeTransaction
+        - Date
+        - FromBankImd
+        - MerchantType
+        - RRN
+        - STAN
+        - Time
+        - accountNumberTo
+        - toBankImd
+        - transactionAmount
+        - transmissionDateAndTime
+      type: object
+      properties:
+        transactionAmount:
+          type: string
+          example: "000000100000"
+        transmissionDateAndTime:
+          type: string
+          example: "0715133513"
+        STAN:
+          type: string
+          example: "102050"
+        Time:
+          type: string
+          example: "133513"
+        Date:
+          type: string
+          example: "0715"
+        MerchantType:
+          type: string
+          example: "0003"
+        FromBankImd:
+          type: string
+          example: "998876"
+        RRN:
+          type: string
+          example: "000000024420"
+        CardAcceptorTerminalId:
+          type: string
+          example: "40260275"
+        CardAcceptorIdCode:
+          type: string
+          example: "402626030259047"
+        CardAcceptorNameLocation:
+          $ref: '#/components/schemas/CardAcceptorNameLocation'
+        MerchantDetail:
+          type: string
+          example: ""
+        PaymentDetail:
+          type: string
+          example: 0320 Donations  Charity
+        CurrencyCodeTransaction:
+          type: string
+          example: "586"
+        accountNumberFrom:
+          type: string
+          example: "3528555323354910"
+        accountNumberTo:
+          type: string
+          example: "6304532132598659"
+        toBankImd:
+          type: string
+          example: "221166"
+        PAN:
+          type: string
+          example: "4250108749566"
+        ExpiryDate:
+          type: string
+          example: "2205"
+        PosEntMode:
+          type: string
+          example: "000"
+        BeneficiaryBankName:
+          type: string
+          example: 1Link Model Bank
+        Reserved1:
+          type: string
+        Reserved2:
+          type: string
+        Reserved3:
+          type: string
+      additionalProperties: false
+    titleFetchRep:
+      type: object
+      properties:
+        ResponseCode:
+          type: string
+        Pan:
+          type: string
+        Amount:
+          type: string
+        TransmissionDateAndTime:
+          type: string
+        Stan:
+          type: string
+        TimeLocalTransaction:
+          type: string
+        DateLocalTransaction:
+          type: string
+        DateSettlement:
+          type: string
+        RetrievalReferenceNumber:
+          type: string
+        AuthorizationIdentificationResponse:
+          type: string
+        accountNumberTo:
+          type: string
+        Alias:
+          type: string
+        ToBankImd:
+          type: string
+        accountTitleTo:
+          type: string
+        branchNameTo:
+          type: string
+        BankName:
+          type: string
+        IBAN_MobileAccountNumber:
+          type: string
+        Reserved1:
+          type: string
+        Reserved2:
+          type: string
+        Reserved3:
+          type: string
+        ResponseDetail:
+          type: string
+      additionalProperties: false
+    CardAcceptorNameLocation:
+      type: object
+      properties:
+        AgentCity:
+          type: string
+          example: karachi
+        Location:
+          type: string
+          example: M.A jinnah road
+        city:
+          type: string
+          example: karachi
+        state:
+          type: string
+          example: Sindh
+        zipCode:
+          type: string
+          example: "87656"
+        AgentName:
+          type: string
+          example: Ali Ahmed
+        ADCLiteral:
+          type: string
+          example: ABC
+        BankName:
+          type: string
+          example: ABC
+        country:
+          type: string
+          example: PK
+      additionalProperties: false
+    Reserved1:
+      type: object
+      properties:
+        Sender ID:
+          type: string
+        Beneficiary ID:
+          type: string
+        Sender Country Code:
+          type: string
+        Originator Details:
+          type: string
+      additionalProperties: false
+  securitySchemes:
+    clientIdHeader:
+      type: apiKey
+      name: X-IBM-Client-Id
+      in: header
+    OAuth-TF:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://sandboxapi.1link.net.pk/uat-1link/sandbox/oauth2/token
+          scopes:
+            "1LinkApi": Scope for APIs
+      x-ibm-oauth-provider: newoauth
+x-ibm-configuration:
+  testable: true
+  enforced: true
+  cors:
+    enabled: true
+  phase: realized
+  type: rest
+  servers:
+    - url: https://sandboxapi.1link.net.pk/uat-1link/sandbox
+      type:
+        - production
+        - development
+  oauth-servers:
+    OAuth-TF:
+      tokenUrls:
+        - https://sandboxapi.1link.net.pk/uat-1link/sandbox/oauth2/token
+      authorizationUrls: []
+      refreshUrls: []
+x-ibm-comment:
+  - "AMU version used to port this API: v10.0.5.1-R0-8443e4b5477f4ff1dc261725a1ed3a2b0bb91cd1-2022-09-21T18:41:44Z"
+  - "API03: Suffix -apigw appended to API `title` and `x-ibm-name`. For details, see:\
+  \ https://www.ibm.com/docs/en/api-connect/10.0.x?topic=cadag-messages-generated-during-conversion-apis-datapower-api-gateway#API_NAME_ADDED_SUFFIX"
+  - "API06: Changed gateway type to `datapower-api-gateway`."
+  - "API14: Ported v5-compatible policies to work with the API Gateway and updated policy\
+  \ versions."
+  - "API45: Compatibility toggle: `copy-id-headers-to-message` set to value: `false`,\
+  \ which is the same as the API Gateway default. For details, see: https://www.ibm.com/docs/en/api-connect/10.0.x?topic=cadag-messages-generated-during-conversion-apis-datapower-api-gateway#COMPAT_TOGGLE_MATCHES_APIGW_DEFAULT"
+  - "API45: Compatibility toggle: `return-v5-responses` set to value: `false`, which\
+  \ is the same as the API Gateway default. For details, see: https://www.ibm.com/docs/en/api-connect/10.0.x?topic=cadag-messages-generated-during-conversion-apis-datapower-api-gateway#COMPAT_TOGGLE_MATCHES_APIGW_DEFAULT"
+  - "API61: Set buffering property to true. For details, see: https://www.ibm.com/docs/en/api-connect/10.0.x?topic=cadag-messages-generated-during-conversion-apis-datapower-api-gateway#SET_BUFFERING"
+  - "API40: Skipping JSON Schema definition: #/definitions/titleFetchRequestBody with\
+  \ multiple roots or not intended for XML data."
+x-original-swagger-version: "2.0"
