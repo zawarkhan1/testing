@@ -1,0 +1,16 @@
+openapi: 3.0.0
+info:
+  title: OpenAPI Car API
+  description: Sample OpenAPI API using cars
+  version: 1.0.0
+  license:
+    name: MIT
+    url: https://urltolicence.com
+security: []
+servers:
+  - url: server1.car.com
+paths:
+  /owner/{owner}/car:
+    $ref: paths/owner@{owner}@car/path.yaml
+  /owner/{owner}:
+    $ref: paths/owner@{owner}/path.yaml
