@@ -28,7 +28,7 @@ paths:
               examples:
                 pastries_json:
                   value:
-                    - name: Baba Rhum
+                    - name: Baba Zawar
                       description: Delicieux Baba au Rhum pas calorique du tout
                       size: L
                       price: 3.2
