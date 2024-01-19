@@ -11,6 +11,44 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/titleFetchRequestBody'
+            example:
+              req:
+                value: {
+                "TransactionAmount": "000000100000",
+                "TransmissionDateAndTime": "0715133513",
+                "STAN": "102050",
+                "Time": "133513",
+                "Date": "0715",
+                "MerchantType": "0003",
+                "FromBankIMD": "998876",
+                "RRN": "000000024420",
+                "CardAcceptorTerminalId": "40260275",
+                "CardAcceptorIdCode": "402626030259047",
+                "CardAcceptorNameLocation": {
+                  "Location": "Park Towers",
+                  "City": "Karachi",
+                  "State": "Sindh",
+                  "ZipCode": "34234",
+                  "AgentName": "Ali Qazi",
+                  "AgentCity": "Karachi",
+                  "ADCLiteral": "Any Channel",
+                  "BankName": "Allied Bank",
+                  "Country": "PK"
+                },
+                "MerchantDetail": "",
+                "PaymentDetail": "0320 Donations  Charity                     ",
+                "CurrencyCodeTransaction": "586",
+                "AccountNumberFrom": "3528555323354910",
+                "AccountNumberTo": "6304532132598659",
+                "ToBankIMD": "221166",
+                "PAN": "4250108749566",
+                "ExpiryDate": "2205",
+                "PosEntMode": "000",
+                "BeneficiaryBankName": "1Link Model Bank",
+                "Reserved1": "Reserved for future",
+                "Reserved2": "Reserved for future",
+                "Reserved3": "Reserved for future"
+              }
         required: false
       responses:
         "200":
@@ -21,29 +59,11 @@ paths:
                 $ref: '#/components/schemas/titleFetchRep'
               example:
                 response_json:
-                  value: '{
-                    "ResponseCode":"repsokiztoafd",
-                    "Pan":"kebtamint",
-                    "Amount":"8793410643165184",
-                    "TransmissionDateAndTime":"12/5/2094",
-                    "Stan":"holwirnalriwawh",
-                    "TimeLocalTransaction":"03:26",
-                    "DateLocalTransaction":"12/1/2122",
-                    "DateSettlement":"1/1/2044",
-                    "RetrievalReferenceNumber":"2774560074104832",
-                    "AuthorizationIdentificationResponse":"1984106613178368",
-                    "accountNumberTo":"6222426127348932",
-                    "Alias":"olulacie",
-                    "ToBankImd":"tewamanpeg",
-                    "accountTitleTo":"6304869614447355",
-                    "branchNameTo":"Etta Graham",
-                    "BankName":"Pearl Hogan",
-                    "IBAN_MobileAccountNumber":"6378803943238988",
-                    "Reserved1":"gemwojoosmani",
-                    "Reserved2":"tabohzoweehz",
-                    "Reserved3":"ufpezuohtoosna",
-                    "ResponseDetail":"nenar"
-                  }'
+                  value: {
+                    "response_json": {
+                      "value": "{ \"ResponseCode\":\"repsokiztoafd\", \"Pan\":\"kebtamint\", \"Amount\":\"8793410643165184\", \"TransmissionDateAndTime\":\"12/5/2094\", \"Stan\":\"holwirnalriwawh\", \"TimeLocalTransaction\":\"03:26\", \"DateLocalTransaction\":\"12/1/2122\", \"DateSettlement\":\"1/1/2044\", \"RetrievalReferenceNumber\":\"2774560074104832\", \"AuthorizationIdentificationResponse\":\"1984106613178368\", \"accountNumberTo\":\"6222426127348932\", \"Alias\":\"olulacie\", \"ToBankImd\":\"tewamanpeg\", \"accountTitleTo\":\"6304869614447355\", \"branchNameTo\":\"Etta Graham\", \"BankName\":\"Pearl Hogan\", \"IBAN_MobileAccountNumber\":\"6378803943238988\", \"Reserved1\":\"gemwojoosmani\", \"Reserved2\":\"tabohzoweehz\", \"Reserved3\":\"ufpezuohtoosna\", \"ResponseDetail\":\"nenar\" }"
+                    }
+                  }
       x-codegen-request-body-name: titleFetchReq
 components:
   schemas:
