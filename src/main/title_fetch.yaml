@@ -25,20 +25,28 @@ paths:
               examples:
                 title_fetch:
                   summary: Creation of a valid car response
-                  value: >-
-                    { "ResponseCode": "vazadwiju", "Pan": "elepore", "Amount":
-                    "6422368559824896", "TransmissionDateAndTime": "11/30/2077",
-                    "Stan": "wepdutafjiklisin", "TimeLocalTransaction": "19:46",
-                    "DateLocalTransaction": "4/1/2049", "DateSettlement":
-                    "8/19/2047", "RetrievalReferenceNumber": "5149289997139968",
-                    "AuthorizationIdentificationResponse": "3187567019163648",
-                    "accountNumberTo": "5433014307501764", "Alias":
-                    "vewdufokcozacov", "ToBankImd": "ifuehituaberezo",
-                    "accountTitleTo": "4026963071924808", "branchNameTo":
-                    "Richard Knight", "BankName": "Ophelia Figueroa",
-                    "IBAN_MobileAccountNumber": "36670454669977", "Reserved1":
-                    "riblipurneib", "Reserved2": "jesd", "Reserved3":
-                    "hilenefizano", "ResponseDetail": "eniwopuodtahwo" }
+                  value:
+                    ResponseCode: 'vazadwiju'
+                    Pan: 'elepore'
+                    Amount: '6422368559824896'
+                    TransmissionDateAndTime: '11/30/2077'
+                    Stan: 'wepdutafjiklisin'
+                    TimeLocalTransaction: '19:46'
+                    DateLocalTransaction: '4/1/2049'
+                    DateSettlement: '8/19/2047'
+                    RetrievalReferenceNumber: '5149289997139968'
+                    AuthorizationIdentificationResponse: '3187567019163648'
+                    accountNumberTo: '5433014307501764'
+                    Alias: 'vewdufokcozacov'
+                    ToBankImd: 'ifuehituaberezo'
+                    accountTitleTo: '4026963071924808'
+                    branchNameTo: 'Richard Knight'
+                    BankName: 'Ophelia Figueroa'
+                    IBAN_MobileAccountNumber: '36670454669977'
+                    Reserved1: 'riblipurneib'
+                    Reserved2: 'jesd'
+                    Reserved3: 'hilenefizano'
+                    ResponseDetail: 'eniwopuodtahwo'
 components:
   schemas:
     titleFetchRequestBody:
