@@ -1,186 +1,75 @@
 openapi: 3.1.0
 info:
-  title: Title Fetch REST
+  title: 1Link Title Fetch
+  description: 1Link Title Fetch
   version: 1.0.0
 paths:
-  /path-1:
+  /1Link/title/fetch:
     post:
-      summary: titleFetch
+      summary: 1Link Title Fetch
+      description: 1Link Title Fetch
       requestBody:
+        description: 1Link Title Fetch
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/titleFetchRequestBody'
-            example:
-              req:
-                value: {
-                "TransactionAmount": "000000100000",
-                "TransmissionDateAndTime": "0715133513",
-                "STAN": "102050",
-                "Time": "133513",
-                "Date": "0715",
-                "MerchantType": "0003",
-                "FromBankIMD": "998876",
-                "RRN": "000000024420",
-                "CardAcceptorTerminalId": "40260275",
-                "CardAcceptorIdCode": "402626030259047",
-                "CardAcceptorNameLocation": {
-                  "Location": "Park Towers",
-                  "City": "Karachi",
-                  "State": "Sindh",
-                  "ZipCode": "34234",
-                  "AgentName": "Ali Qazi",
-                  "AgentCity": "Karachi",
-                  "ADCLiteral": "Any Channel",
-                  "BankName": "Allied Bank",
-                  "Country": "PK"
-                },
-                "MerchantDetail": "",
-                "PaymentDetail": "0320 Donations  Charity                     ",
-                "CurrencyCodeTransaction": "586",
-                "AccountNumberFrom": "3528555323354910",
-                "AccountNumberTo": "6304532132598659",
-                "ToBankIMD": "221166",
-                "PAN": "4250108749566",
-                "ExpiryDate": "2205",
-                "PosEntMode": "000",
-                "BeneficiaryBankName": "1Link Model Bank",
-                "Reserved1": "Reserved for future",
-                "Reserved2": "Reserved for future",
-                "Reserved3": "Reserved for future"
-              }
-        required: false
+        required: true
       responses:
-        "200":
-          description: 200 OK
+        '201':
+          description: Response
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/titleFetchRep'
-              example:
-                response_json:
-                  value: {
-                    "response_json": {
-                      "value": "{ \"ResponseCode\":\"repsokiztoafd\", \"Pan\":\"kebtamint\", \"Amount\":\"8793410643165184\", \"TransmissionDateAndTime\":\"12/5/2094\", \"Stan\":\"holwirnalriwawh\", \"TimeLocalTransaction\":\"03:26\", \"DateLocalTransaction\":\"12/1/2122\", \"DateSettlement\":\"1/1/2044\", \"RetrievalReferenceNumber\":\"2774560074104832\", \"AuthorizationIdentificationResponse\":\"1984106613178368\", \"accountNumberTo\":\"6222426127348932\", \"Alias\":\"olulacie\", \"ToBankImd\":\"tewamanpeg\", \"accountTitleTo\":\"6304869614447355\", \"branchNameTo\":\"Etta Graham\", \"BankName\":\"Pearl Hogan\", \"IBAN_MobileAccountNumber\":\"6378803943238988\", \"Reserved1\":\"gemwojoosmani\", \"Reserved2\":\"tabohzoweehz\", \"Reserved3\":\"ufpezuohtoosna\", \"ResponseDetail\":\"nenar\" }"
-                    }
-                  }
-      x-codegen-request-body-name: titleFetchReq
+              examples:
+                laurent_307:
+                  summary: Creation of a valid car response
+                  value: >-
+                    { "ResponseCode": "vazadwiju", "Pan": "elepore", "Amount":
+                    "6422368559824896", "TransmissionDateAndTime": "11/30/2077",
+                    "Stan": "wepdutafjiklisin", "TimeLocalTransaction": "19:46",
+                    "DateLocalTransaction": "4/1/2049", "DateSettlement":
+                    "8/19/2047", "RetrievalReferenceNumber": "5149289997139968",
+                    "AuthorizationIdentificationResponse": "3187567019163648",
+                    "accountNumberTo": "5433014307501764", "Alias":
+                    "vewdufokcozacov", "ToBankImd": "ifuehituaberezo",
+                    "accountTitleTo": "4026963071924808", "branchNameTo":
+                    "Richard Knight", "BankName": "Ophelia Figueroa",
+                    "IBAN_MobileAccountNumber": "36670454669977", "Reserved1":
+                    "riblipurneib", "Reserved2": "jesd", "Reserved3":
+                    "hilenefizano", "ResponseDetail": "eniwopuodtahwo" }
 components:
   schemas:
-    titleFetchResponseBody:
-      type: object
-      properties:
-        ResponseCode:
-          type: string
-        PAN:
-          type: string
-        Amount:
-          type: string
-        TransmissionDateAndTime:
-          type: string
-        STAN:
-          type: string
-        Time:
-          type: string
-        Date:
-          type: string
-        DateSettlement:
-          type: string
-        RRN:
-          type: string
-        AuthorizationIdentificationResponse:
-          type: string
-        AccountNumberTo:
-          type: string
-        Alias:
-          type: string
-        ToBankIMD:
-          type: string
-        AccountTitleTo:
-          type: string
-        BranchNameTo:
-          type: string
-        BankName:
-          type: string
-        IBAN_MobileAccountNumber:
-          type: string
-        Reserved1:
-          $ref: '#/components/schemas/Reserved1'
-        Reserved2:
-          type: string
-        Reserved3:
-          type: string
-        ResponseDetail:
-          type: string
-      additionalProperties: false
-    CardAcceptorNameLoc:
-      type: object
-      properties:
-        Location:
-          type: string
-          example: Park Towers
-        City:
-          type: string
-          example: Karachi
-        State:
-          type: string
-          example: Sindh
-        ZipCode:
-          type: string
-          example: "34234"
-        AgentName:
-          type: string
-          example: Ali Qazi
-        AgentCity:
-          type: string
-          example: Karachi
-        ADCLiteral:
-          type: string
-          example: Any Channel
-        BankName:
-          type: string
-          example: Allied Bank
-        Country:
-          type: string
-          example: PK
-      additionalProperties: false
     titleFetchRequestBody:
-      required:
-        - AccountNumberTo
-        - CardAcceptorNameLocation
-        - CardAcceptorTerminalId
-        - CurrencyCodeTransaction
-        - Date
-        - FromBankIMD
-        - MerchantType
-        - PAN
-        - PosEntMode
-        - RRN
-        - STAN
-        - Time
-        - ToBankIMD
-        - TransactionAmount
-        - TransmissionDateAndTime
       type: object
       properties:
         TransactionAmount:
           maxLength: 12
           minLength: 1
           type: string
-          description: "Transaction amount in PKR, up to 2 \ndecimal places"
-          example: "000000100000"
+          description: |-
+            Transaction amount in PKR, up to 2 
+            decimal places
+          examples:
+            - '000000100000'
         TransmissionDateAndTime:
           maxLength: 10
           minLength: 1
           type: string
-          description: "Transmission date and time, Format: \n“MMDDhhmmss”. "
-          example: "0715133513"
+          description: |-
+            Transmission date and time, Format: 
+            “MMDDhhmmss”.
+          examples:
+            - '0715133513'
         STAN:
           maxLength: 6
           minLength: 1
           type: string
-          description: "System Trace Audit Number. \n"
-          example: "102050"
+          description: |
+            System Trace Audit Number.
+          examples:
+            - '102050'
         Time:
           maxLength: 6
           minLength: 1
@@ -188,202 +77,136 @@ components:
           description: |-
             Local transaction time,
             Format: “hhmmss”
-          example: "133513"
+          examples:
+            - '133513'
         Date:
           maxLength: 4
           minLength: 1
           type: string
-          description: " Local transaction date. Format: “MMDD”"
-          example: "0715"
+          description: ' Local transaction date. Format: “MMDD”'
+          examples:
+            - '0715'
         MerchantType:
           maxLength: 4
           minLength: 1
           type: string
           description: Four-digit code identifying merchant.
-          example: "0003"
+          examples:
+            - '0003'
         FromBankIMD:
           maxLength: 11
           minLength: 1
           type: string
           description: The bank IMD/BIN of acquiring bank.
-          example: "998876"
+          examples:
+            - '998876'
         RRN:
           maxLength: 12
           minLength: 1
           type: string
           description: Reference number sent by the acquirer.
-          example: "000000024420"
+          examples:
+            - '000000024420'
         CardAcceptorTerminalId:
           maxLength: 8
           minLength: 1
           type: string
           description: Unique requesting terminal identifier.
-          example: "40260275"
+          examples:
+            - '40260275'
         CardAcceptorIdCode:
           maxLength: 15
           minLength: 1
           type: string
           description: Code uniquely identifying card acceptor.
-          example: "402626030259047"
-        CardAcceptorNameLocation:
-          $ref: '#/components/schemas/CardAcceptorNameLoc'
+          examples:
+            - '402626030259047'
         MerchantDetail:
           maxLength: 999
           type: string
           description: In transactions this field contains Merchant Category code
-          example: ""
+          examples:
+            - ''
         PaymentDetail:
           maxLength: 44
           minLength: 1
           type: string
-          description: "Issuing transactions this field contains Merchant Category\
-            \ code \n          Payment Code (length=4) \n          Payment Details\
-            \ (length=40)"
-          example: '0320 Donations  Charity                     '
+          description: |-
+            Issuing transactions this field contains Merchant Category code 
+                      Payment Code (length=4) 
+                      Payment Details (length=40)
+          examples:
+            - '0320 Donations  Charity                     '
         CurrencyCodeTransaction:
           maxLength: 3
           minLength: 1
           type: string
-          description: "Currency Code, Transaction is the local currency of the acquirer."
-          example: "586"
+          description: 'Currency Code, Transaction is the local currency of the acquirer.'
+          examples:
+            - '586'
         AccountNumberFrom:
           maxLength: 28
           minLength: 1
           type: string
-          description: AccountNumberFrom is a digits/characters used to identify customer
+          description: >-
+            AccountNumberFrom is a digits/characters used to identify customer
             account
-          example: "3528555323354910"
+          examples:
+            - '3528555323354910'
         AccountNumberTo:
           maxLength: 28
           minLength: 1
           type: string
           description: This field contains Destination Account Number
-          example: "6304532132598659"
+          examples:
+            - '6304532132598659'
         ToBankIMD:
           maxLength: 11
           minLength: 1
           type: string
           description: The bank IMD/BIN of issuer bank
-          example: "221166"
+          examples:
+            - '221166'
         PAN:
           maxLength: 19
           type: string
           description: Personal Account Number.
-          example: "4250108749566"
+          examples:
+            - '4250108749566'
         ExpiryDate:
           maxLength: 4
           minLength: 1
           type: string
-          example: "2205"
+          examples:
+            - '2205'
         PosEntMode:
           maxLength: 3
           minLength: 1
           type: string
           description: Point-of-Service Entry Mode
-          example: "000"
+          examples:
+            - '000'
         BeneficiaryBankName:
           maxLength: 20
           type: string
           description: This field will contain the Bank Name of “To/Destination” Account
-          example: 1Link Model Bank
+          examples:
+            - 1Link Model Bank
         Reserved1:
           maxLength: 999
           type: string
-          example: Reserved for future
+          examples:
+            - Reserved for future
         Reserved2:
           maxLength: 999
           type: string
-          example: Reserved for future
+          examples:
+            - Reserved for future
         Reserved3:
           maxLength: 1001
           type: string
-          example: Reserved for future
-      additionalProperties: false
-    titleFetchReq:
-      required:
-        - CardAcceptorNameLocation
-        - CardAcceptorTerminalId
-        - CurrencyCodeTransaction
-        - Date
-        - FromBankImd
-        - MerchantType
-        - RRN
-        - STAN
-        - Time
-        - accountNumberTo
-        - toBankImd
-        - transactionAmount
-        - transmissionDateAndTime
-      type: object
-      properties:
-        transactionAmount:
-          type: string
-          example: "000000100000"
-        transmissionDateAndTime:
-          type: string
-          example: "0715133513"
-        STAN:
-          type: string
-          example: "102050"
-        Time:
-          type: string
-          example: "133513"
-        Date:
-          type: string
-          example: "0715"
-        MerchantType:
-          type: string
-          example: "0003"
-        FromBankImd:
-          type: string
-          example: "998876"
-        RRN:
-          type: string
-          example: "000000024420"
-        CardAcceptorTerminalId:
-          type: string
-          example: "40260275"
-        CardAcceptorIdCode:
-          type: string
-          example: "402626030259047"
-        CardAcceptorNameLocation:
-          $ref: '#/components/schemas/CardAcceptorNameLocation'
-        MerchantDetail:
-          type: string
-          example: ""
-        PaymentDetail:
-          type: string
-          example: 0320 Donations  Charity
-        CurrencyCodeTransaction:
-          type: string
-          example: "586"
-        accountNumberFrom:
-          type: string
-          example: "3528555323354910"
-        accountNumberTo:
-          type: string
-          example: "6304532132598659"
-        toBankImd:
-          type: string
-          example: "221166"
-        PAN:
-          type: string
-          example: "4250108749566"
-        ExpiryDate:
-          type: string
-          example: "2205"
-        PosEntMode:
-          type: string
-          example: "000"
-        BeneficiaryBankName:
-          type: string
-          example: 1Link Model Bank
-        Reserved1:
-          type: string
-        Reserved2:
-          type: string
-        Reserved3:
-          type: string
+          examples:
+            - Reserved for future
       additionalProperties: false
     titleFetchRep:
       type: object
