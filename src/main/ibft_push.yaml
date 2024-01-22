@@ -23,7 +23,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/IBFTResponseBody'
               examples:
-                laurent_307:
+                ibft_push:
                   summary: Creation of a valid car response
                   value:
                     ResponseCode: '00'

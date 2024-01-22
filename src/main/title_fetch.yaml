@@ -23,7 +23,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/titleFetchRep'
               examples:
-                laurent_307:
+                title_fetch:
                   summary: Creation of a valid car response
                   value: >-
                     { "ResponseCode": "vazadwiju", "Pan": "elepore", "Amount":
