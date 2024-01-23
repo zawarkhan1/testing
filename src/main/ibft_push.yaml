@@ -1,127 +1,243 @@
-openapi: 3.1.0
+openapi: 3.0.1
 info:
-  title: 1Link IBFT Push
-  description: 1Link IBFT Push
+  title: IBFT Push REST
   version: 1.0.0
+  x-ibm-name: funds-transfer-rest-service
+servers:
+  - url: https://sandboxapi.1link.net.pk/uat-1link/sandbox/funds-transfer-rest-service
+security:
+  - clientID: []
+    OAuth-TF:
+      - 1LinkApi
 paths:
-  /1Link/title/fetch:
+  /path-1:
     post:
-      summary: 1Link IBFT Push
-      description: 1Link IBFT Push
       requestBody:
-        description: 1Link IBFT Push
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/IBFTRequestBody'
-        required: true
+        required: false
       responses:
-        '201':
-          description: Response
+        "200":
+          description: success
           content:
-            application/json:
+            '*/*':
               schema:
                 $ref: '#/components/schemas/IBFTResponseBody'
               examples:
                 ibft_push:
-                  summary: Creation of a valid car response
+                  summary: Response of ibft push
                   value:
                     ResponseCode: '00'
-                    PAN: '998876000000024424'
+                    PAN: '4250108749566'
                     Amount: '000000100000'
                     TransmissionDateAndTime: '1015133513'
                     STAN: '102045'
-                    TimeLocalTransaction: '133513'
-                    DateLocalTransaction: '1015'
-                    DateSettlement: 0428
-                    RRN: '000000024424'
+                    Time: '133513'
+                    Date: '1015'
+                    DateSettlement: '0124'
+                    RRN: 000000024424'
                     AuthorizationIdentificationResponse: '102043'
-                    ToBankIMD: '199667'
+                    ToBankIMD: '221166'
                     AccountNumberTo: '6304532132598659'
-                    Reserved1: Reserved
-                    Reserved2: Reserved
-                    Reserved3: Reserved
-                    ResponseDetail: PROCESSED OK
+                    Reserved1: ''
+                    Reserved2: ''
+                    Reserved3: ''
+                    ResponseDetail: “PROCESSED OK”
+      x-codegen-request-body-name: fundsTransfer
 components:
   schemas:
+    ResponseBody:
+      type: object
+      properties:
+        ResponseCode:
+          type: string
+          example: "00"
+        PAN:
+          type: string
+          example: "998876000000024424"
+        Amount:
+          type: string
+          example: "000000100000"
+        TransmissionDateAndTime:
+          type: string
+          example: "1015133513"
+        STAN:
+          type: string
+          example: "102045"
+        Time:
+          type: string
+          example: "133513"
+        Date:
+          type: string
+          example: "1015"
+        DateSettlement:
+          type: string
+          example: "0428"
+        RRN:
+          type: string
+          example: "000000024424"
+        AuthorizationIdentificationResponse:
+          type: string
+          example: "102043"
+        ToBankIMD:
+          type: string
+          example: "199667"
+        AccountNumberTo:
+          type: string
+          example: "6304532132598659"
+        Reserved1:
+          type: string
+          example: Reserved
+        Reserved2:
+          type: string
+          example: Reserved
+        Reserved3:
+          type: string
+          example: Reserved
+        ResponseDetail:
+          type: string
+          example: PROCESSED OK
+      additionalProperties: false
     IBFTResponseBody:
       type: object
       properties:
         ResponseCode:
           type: string
-          examples: ['00']
+          example: "00"
         PAN:
           type: string
-          examples: ['998876000000024424']
+          example: "998876000000024424"
         Amount:
           type: string
-          examples: ['000000100000']
+          example: "000000100000"
         TransmissionDateAndTime:
           type: string
-          examples: ['1015133513']
+          example: "1015133513"
         STAN:
           type: string
-          examples: ['102045']
+          example: "102045"
         TimeLocalTransaction:
           type: string
-          examples: ['133513']
+          example: "133513"
         DateLocalTransaction:
           type: string
-          examples: ['1015']
+          example: "1015"
         DateSettlement:
           type: string
-          examples: [0428]
+          example: "0428"
         RRN:
           type: string
-          examples: ['000000024424']
+          example: "000000024424"
         AuthorizationIdentificationResponse:
           type: string
-          examples: ['102043']
+          example: "102043"
         ToBankIMD:
           type: string
-          examples: ['199667']
+          example: "199667"
         AccountNumberTo:
           type: string
-          examples: ['6304532132598659']
+          example: "6304532132598659"
         Reserved1:
           type: string
-          examples: [Reserved]
+          example: Reserved
         Reserved2:
           type: string
-          examples: [Reserved]
+          example: Reserved
         Reserved3:
           type: string
-          examples: [Reserved]
+          example: Reserved
         ResponseDetail:
           type: string
-          examples: [PROCESSED OK]
+          example: PROCESSED OK
+      additionalProperties: false
+    IBFTResponse:
+      type: object
+      properties:
+        Head:
+          $ref: '#/components/schemas/Head'
+        Body:
+          $ref: '#/components/schemas/ResponseBody'
+      additionalProperties: false
+    Head:
+      type: object
+      properties:
+        Hash:
+          type: string
+      additionalProperties: false
+    CardAcceptorNameLocation:
+      type: object
+      properties:
+        Location:
+          type: string
+          example: Park Towers
+        City:
+          type: string
+          example: Karachi
+        State:
+          type: string
+          example: Sindh
+        ZipCode:
+          type: string
+          example: "34566"
+        AgentName:
+          type: string
+          example: Ali Khan
+        ADCLiteral:
+          type: string
+          example: Any Channel
+        AgentCity:
+          type: string
+          example: Karachi
+        BankName:
+          type: string
+          example: Allied
+        Country:
+          type: string
+          example: PK
       additionalProperties: false
     IBFTRequestBody:
+      required:
+        - AccountNumberFrom
+        - AccountNumberTo
+        - AuthorizationIdentificationResponse
+        - CardAcceptorNameLocation
+        - CardAcceptorTerminalId
+        - CurrencyCodeTransaction
+        - Date
+        - FromBankIMD
+        - MerchantType
+        - PAN
+        - PosEntryMode
+        - RRN
+        - STAN
+        - SenderIBAN
+        - SenderName
+        - Time
+        - ToBankIMD
+        - TransactionAmount
+        - TransmissionDateAndTime
       type: object
       properties:
         TransactionAmount:
           maxLength: 12
           minLength: 1
           type: string
-          description: |-
-            Transaction amount in PKR, up to 2 
-            decimal places
-          examples: ['000000100000']
+          description: "Transaction amount in PKR, up to 2 \ndecimal places"
+          example: "000000100000"
         TransmissionDateAndTime:
           maxLength: 10
           minLength: 1
           type: string
-          description: |-
-            Transmission date and time, Format: 
-            “MMDDhhmmss”.
-          examples: ['1015133513']
+          description: "Transmission date and time, Format: \n“MMDDhhmmss”. "
+          example: "1015133513"
         STAN:
           maxLength: 6
           minLength: 1
           type: string
-          description: |
-            System Trace Audit Number.
-          examples: ['102045']
+          description: "System Trace Audit Number. \n"
+          example: "102045"
         Time:
           maxLength: 6
           minLength: 1
@@ -129,158 +245,129 @@ components:
           description: |-
             Local transaction time,
             Format: “hhmmss”
-          examples: ['133513']
+          example: "133513"
         Date:
           maxLength: 4
           minLength: 1
           type: string
-          description: |
-            Local transaction date. 
-            Format: “MMDD”
-          examples: ['1015']
+          description: "Local transaction date. \nFormat: “MMDD”\n"
+          example: "1015"
         MerchantType:
           maxLength: 4
           minLength: 1
           type: string
-          description: |-
-            Four-digit code identifying 
-            merchant.
-          examples: ['0003']
+          description: "Four-digit code identifying \nmerchant."
+          example: "0003"
         FromBankIMD:
           maxLength: 11
           minLength: 1
           type: string
           description: |
             The bank IMD/BIN of acquiring bank.
-          examples: ['998876']
+          example: "998876"
         RRN:
           maxLength: 12
           minLength: 1
           type: string
           description: Reference number sent by the acquirer.
-          examples: ['000000024424']
+          example: "000000024424"
         AuthorizationIdentificationResponse:
           maxLength: 6
           minLength: 1
           type: string
-          description: |-
-            6-digit Authorization Identification 
-            Response is a code generated by 
-            an issuer for transactions 
-            authorized by the issuer.
-          examples: ['102043']
+          description: "6-digit Authorization Identification \nResponse is a code\
+            \ generated by \nan issuer for transactions \nauthorized by the issuer. "
+          example: "102043"
         CardAcceptorTerminalId:
           maxLength: 8
           minLength: 1
           type: string
-          description: |-
-            Unique requesting terminal 
-            identifier.
-          examples: ['40260275']
+          description: "Unique requesting terminal \nidentifier. "
+          example: "40260275"
         CardAcceptorIdCode:
           maxLength: 15
           minLength: 1
           type: string
-          description: |-
-            Code uniquely identifying card 
-            acceptor.
-          examples: ['402626030259047']
+          description: "Code uniquely identifying card \nacceptor."
+          example: "402626030259047"
+        CardAcceptorNameLocation:
+          $ref: '#/components/schemas/CardAcceptorNameLocation'
         MerchantDetail:
           maxLength: 999
           type: string
-          description: |-
-            In transactions this field contains 
-            Merchant Category code
-          examples: ['']
+          description: "In transactions this field contains \nMerchant Category code "
+          example: ""
         PaymentDetail:
           maxLength: 44
           minLength: 1
           type: string
-          description: |-
-            Issuing transactions this field 
-            contains Merchant Category code 
-            Payment Code (length=4) 
-            Payment Details (length=40)
-          examples: [0320 Donations  Charity]
+          description: "Issuing transactions this field \ncontains Merchant Category\
+            \ code \nPayment Code (length=4) \nPayment Details (length=40)"
+          example: 0320 Donations  Charity
         CurrencyCodeTransaction:
           maxLength: 3
           minLength: 1
           type: string
-          description: |-
-            Currency Code, Transaction is the 
-            local currency of the acquirer.
-          examples: ['586']
+          description: "Currency Code, Transaction is the \nlocal currency of the\
+            \ acquirer. "
+          example: "586"
         AccountNumberFrom:
           maxLength: 28
           minLength: 1
           type: string
-          description: |-
-            AccountNumberFrom is a 
-            digits/characters used to 
-            identify customer account
-          examples: ['3528555323354910']
+          description: "AccountNumberFrom is a \ndigits/characters used to \nidentify\
+            \ customer account"
+          example: "3528555323354910"
         AccountNumberTo:
           maxLength: 28
           minLength: 1
           type: string
-          description: |-
-            This field contains Destination 
-            Account Number
-          examples: ['6304532132598659']
+          description: "This field contains Destination \nAccount Number"
+          example: "6304532132598659"
         ToBankIMD:
           maxLength: 11
           minLength: 1
           type: string
-          description: |-
-            The bank IMD/BIN of 
-            issuer bank
-          examples: ['221166']
+          description: "The bank IMD/BIN of \nissuer bank"
+          example: "221166"
         PAN:
           maxLength: 19
           type: string
-          description: |
-            Personal Account Number.
-          examples: ['4250108749566']
+          description: "Personal Account Number. \n"
+          example: "4250108749566"
         ExpiryDate:
           maxLength: 4
           minLength: 1
           type: string
-          examples: ['2812']
+          example: "2812"
         PosEntryMode:
           maxLength: 3
           minLength: 1
           type: string
           description: |
             Point-of-Service Entry Mode
-          examples: ['021']
+          example: "021"
         BeneficiaryBankName:
           maxLength: 20
           type: string
-          description: |-
-            This field will contain the Bank Name 
-            of “To/Destination” Account
-          examples: [Allied Bank]
+          description: "This field will contain the Bank Name \nof “To/Destination”\
+            \ Account "
+          example: Allied Bank
         Reserved1:
           maxLength: 999
           type: string
-          description: |-
-            Reserved for future 
-            use.
-          examples: [Reserved]
+          description: "Reserved for future \nuse."
+          example: Reserved
         Reserved2:
           maxLength: 999
           type: string
-          description: |-
-            Reserved for future 
-            use.
-          examples: [Reserved]
+          description: "Reserved for future \nuse."
+          example: Reserved
         Reserved3:
           maxLength: 999
           type: string
-          description: |-
-            Reserved for future 
-            use.
-          examples: [Reserved]
+          description: "Reserved for future \nuse."
+          example: Reserved
         RTPID:
           maxLength: 30
           minLength: 1
@@ -297,14 +384,44 @@ components:
           maxLength: 30
           minLength: 1
           type: string
-          description: |-
-            This field contains name of sender 
-            who is sending funds.
+          description: "This field contains name of sender \nwho is sending funds. "
         SenderIBAN:
           maxLength: 25
           minLength: 1
           type: string
-          description: |-
-            This field contains IBAN or Mobile 
-            Account Number
+          description: "This field contains IBAN or Mobile \nAccount Number"
       additionalProperties: false
+  securitySchemes:
+    clientID:
+      type: apiKey
+      name: X-IBM-Client-Id
+      in: header
+    OAuth-TF:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://sandboxapi.1link.net.pk/uat-1link/sandbox/oauth2/token
+          scopes:
+            "1LinkApi": Scope for APIs
+      x-ibm-oauth-provider: newoauth
+x-ibm-configuration:
+  cors:
+    enabled: true
+  type: rest
+  phase: realized
+  enforced: true
+  testable: true
+  application-authentication:
+    certificate: false
+  servers:
+    - url: https://sandboxapi.1link.net.pk/uat-1link/sandbox/funds-transfer-rest-service
+      type:
+        - production
+        - development
+  oauth-servers:
+    OAuth-TF:
+      tokenUrls:
+        - https://sandboxapi.1link.net.pk/uat-1link/sandbox/oauth2/token
+      authorizationUrls: []
+      refreshUrls: []
+x-original-swagger-version: "2.0"
