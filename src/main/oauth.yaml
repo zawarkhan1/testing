@@ -1,0 +1,62 @@
+openapi: 3.1.0
+info:
+  title: 1Link OAuth Token
+  description: 1Link OAuth Token
+  version: 1.0.0
+paths:
+  /1Link/oauth/token:
+    post:
+      summary: 1Link OAuth Token
+      description: 1Link IBFT Push
+      requestBody:
+        description: 1Link OAuth Token
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Request'
+        required: true
+      responses:
+        '201':
+          description: Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+              examples:
+                response:
+                  summary: valid response
+                  value:
+                    token_type: 'Bearer'
+                    access_token: 'AAIgNWI0NTc0M2QwNGFhNzZkNTExZWFkYjVjY2ZiZGZmOGYZ53iEoiSEPMSawRpmDYd-6ND-14ktzJ2HD1pzRau1cm4M2-CLa7vrgcK_GYIrstJhVLyEDGuwuqnR5Vb6tooM6SIPciFZVn0MYKkO5pv8v7DiexoXxcDdb5T7UvP-GZQ'
+                    scope: 1LinkApi'
+                    expires_in: 86400
+                    consented_on: 1705998770
+components:
+  schemas:
+    Response:
+      type: object
+      properties:
+        token_type:
+          type: string
+          examples: ['Bearer']
+        access_token:
+          type: string
+          examples: ['AAIgNWI0NTc0M2QwNGFhNzZkNTExZWFkYjVjY2ZiZGZmOGYZ53iEoiSEPMSawRpmDYd-6ND-14ktzJ2HD1pzRau1cm4M2-CLa7vrgcK_GYIrstJhVLyEDGuwuqnR5Vb6tooM6SIPciFZVn0MYKkO5pv8v7DiexoXxcDdb5T7UvP-GZQ']
+        scope:
+          type: string
+          examples: ['1LinkApi']
+        expires_in:
+          type: integer
+          examples: [86400]
+        consented_on:
+          type: integer
+          examples: [1705998770]
+    Request:
+      type: object
+      properties:
+        grant_type:
+          type: string
+          examples: ['client_credentials']
+        scope:
+          type: string
+          examples: ['1LinkApi']
